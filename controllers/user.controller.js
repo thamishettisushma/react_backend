@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import getDataUri from "../utils/datauri.js";
 import cloudinary from "../utils/cloudinary.js";
+import mongoose from "mongoose";
 
 export const register = async (req, res) => {
     try {
@@ -65,7 +66,7 @@ export const login = async (req, res) => {
                 success: false
             });
         }
-        
+
         let user = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({
