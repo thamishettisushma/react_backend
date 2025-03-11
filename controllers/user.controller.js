@@ -59,7 +59,7 @@ export const login = async (req, res) => {
             });
         };
 
-         // ✅ Ensure DB is ready before querying
+         //  Ensure DB is ready before querying
          if (mongoose.connection.readyState !== 1) {
             return res.status(500).json({
                 message: "Database not connected",
