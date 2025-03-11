@@ -10,6 +10,7 @@ import applicationRoute from "./routes/application.route.js"
 dotenv.config({})
 
 const app=express()
+connectDB()
 
 const corsOptions={
     origin: "http://localhost:5173",
@@ -40,6 +41,6 @@ app.use("/api/v1/job",jobRoute)
 app.use("/api/v1/application",applicationRoute)
 
 app.listen(PORT,()=>{
-    connectDB()
+   
     console.log(`server running at port ${BASE_URL}`)
 })
