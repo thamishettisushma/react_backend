@@ -12,10 +12,11 @@ dotenv.config({})
 const app=express()
 
 const corsOptions={
-    origin:"http://localhost:5173",
+    origin: "http://localhost:5173",
     credentials:true
 }
 app.use(cors(corsOptions))
+// app.use(cors());
 
 app.get("/home", (req, res)=> {
     return res.send("hello world")
@@ -29,6 +30,7 @@ app.use(cookieParser( ))
 
 
 const PORT=process.env.PORT || 5000
+const BASE_URL=process.env.BASE_URL
 
 
 // apis
@@ -39,5 +41,5 @@ app.use("/api/v1/application",applicationRoute)
 
 app.listen(PORT,()=>{
     connectDB()
-    console.log(`server running at port ${PORT}`)
+    console.log(`server running at port ${BASE_URL}`)
 })
