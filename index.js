@@ -8,9 +8,9 @@ import companyRoute from "./routes/company.route.js"
 import jobRoute from "./routes/job.route.js"
 import applicationRoute from "./routes/application.route.js"
 dotenv.config({})
+connectDB();
 
 const app=express()
-connectDB()
 
 const corsOptions={
     origin: "http://localhost:5173",
@@ -18,6 +18,10 @@ const corsOptions={
 }
 app.use(cors(corsOptions))
 // app.use(cors());
+
+app.get("/",(req,res)=>{
+    res.send("API is running...")
+})
 
 app.get("/home", (req, res)=> {
     return res.send("hello world")

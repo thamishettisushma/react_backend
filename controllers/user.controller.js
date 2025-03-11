@@ -57,6 +57,15 @@ export const login = async (req, res) => {
                 success: false
             });
         };
+
+         // ✅ Ensure DB is ready before querying
+         if (mongoose.connection.readyState !== 1) {
+            return res.status(500).json({
+                message: "Database not connected",
+                success: false
+            });
+        }
+        
         let user = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({
