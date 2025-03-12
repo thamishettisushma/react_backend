@@ -12,12 +12,20 @@ connectDB()
 console.log("MONGO_URI:", process.env.MONGO_URI);
 const app=express()
 
-const corsOptions={
-    origin: ["http://localhost:5173", "https://react-frontend-one-henna.vercel.app"],
-    credentials:true
-}
-app.use(cors(corsOptions))
+// const corsOptions={
+//     origin: ["http://localhost:5173", "https://react-frontend-one-henna.vercel.app"],
+//     credentials:true
+// }
+// app.use(cors(corsOptions))
 // app.use(cors());
+
+const corsOptions = {
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 
 app.get("/",(req,res)=>{
     res.send("API is running...")
